@@ -33,6 +33,8 @@ hi CursorLine   cterm=NONE ctermbg=blue ctermfg=white
 
 set paste
 
+set ts=4
+set expandtab
 "显示中文问题
 "set encoding=chinese
 
