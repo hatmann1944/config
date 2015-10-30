@@ -1,3 +1,4 @@
+call pathogen#infect()
 " 不要使用vi的键盘模式，而是vim自己的
 set nocompatible
 "在windows版本中vim的退格键模式默认与vi兼容，与我们的使用习惯不太符合，下边这条可以改过来
@@ -34,7 +35,6 @@ hi CursorLine   cterm=NONE ctermbg=blue ctermfg=white
 set paste
 
 set ts=4
-set expandtab
 "显示中文问题
 "set encoding=chinese
 
@@ -64,8 +64,8 @@ set updatetime=100
 nmap <silent> <F2> :tabp<CR>
 nmap <silent> <F3> :tabn<CR>
 
-nmap <silent> <F4> :TagbarToggle<CR>
-nmap <silent> <F4> :TagbarToggle<CR>
+nmap <silent> <F6> :TagbarToggle<CR>
+nmap <silent> <F6> :TagbarToggle<CR>
 let g:tagbar_ctags_bin = 'ctags'
 let g:tagbar_right = 1                                "在右侧                                              
 let g:tagbar_width=30
@@ -88,17 +88,16 @@ map <F9> :!cscope -Rbq <CR><CR>
 
 
 """""""""""""设置source explorer"""""""""""""
-nmap <F5> :SrcExplToggle<CR>
-let g:SrcExpl_winHeight = 8 "默认高度
-let g:SrcExpl_refreshTime = 100 "更新时间(ms) 
-let g:SrcExpl_isUpdateTags = 0 "每次打开SrcExpl时是否更新tags(0为不更新) 
-let g:SrcExpl_updateTagsKey = "<F12>" "更新tags的快捷键
-
+"nmap <F5> :SrcExplToggle<CR>
+"let g:SrcExpl_winHeight = 8 "默认高度
+"let g:SrcExpl_refreshTime = 100 "更新时间(ms) 
+"let g:SrcExpl_isUpdateTags = 0 "每次打开SrcExpl时是否更新tags(0为不更新) 
+"let g:SrcExpl_updateTagsKey = "<F12>" "更新tags的快捷键
 
 
 """""""""""""设置NerdTree"""""""""""""
-map <F6> :NERDTreeMirror<CR>
-map <F6> :NERDTreeToggle<CR>
+map <F4> :NERDTreeMirror<CR>
+map <F4> :NERDTreeToggle<CR>
 let NERDTreeWinPos = "left"
 let NERDTreeDirArrows = 0
 "let NERDTreeQuitOnOpen=1
@@ -116,4 +115,42 @@ filetype plugin on
   
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
+let g:go_disable_autoinstall = 0
+"let g:neocomplete#enable_at_startup = 1
+let g:godef_split=0
+"set background=dark
+"set background=dark
+"colorscheme grb256
+"colorscheme grblight 
+"colorscheme redstring 
+"colorscheme blackdust 
+"colorscheme freya 
+colorscheme rainbow_neon 
 
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
